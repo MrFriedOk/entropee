@@ -16,7 +16,7 @@ fn load() {
         .filter(|word| {
             !word.contains('-')
                 && word.len() >= 3
-                && word.chars().all(|char| char.is_ascii_alphabetic())
+                && word.chars().any(|char| char.is_ascii_alphabetic())
         })
         .collect();
     println!("{:?}", words);
