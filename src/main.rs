@@ -34,15 +34,16 @@ fn basic() -> i64 {
     basic_entropy
 }
 
-fn advanced(basic: &i64) -> i64 {
-    let entropy: i64 = basic;
+fn advanced(basic: &mut i64) -> i64 {
+    let words: HashSet<String> = load();
 
-    entropy
+    *basic
 }
 
 fn main() {
     load();
     println!("input password");
     let mut basic: i64 = basic();
-    let advanced: i64 = advanced(&basic);
+    let advanced: i64 = advanced(&mut basic);
+    println!("after some checks, the entropy is now {} bits", advanced)
 }
