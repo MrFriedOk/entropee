@@ -1,6 +1,5 @@
 use rpassword::read_password;
 use std::collections::HashSet;
-use std::{env, fs};
 
 const ASCII: i64 = 95;
 
@@ -8,9 +7,8 @@ const WORDS_BYTES: &str = include_str!("words.txt");
 
 //const WORDS: HashSet<String> = load();
 
-fn load() {
-    // -> HashSet<String> {
-    let mut words: HashSet<String> = WORDS_BYTES
+fn load() -> HashSet<String> {
+    let words: HashSet<String> = WORDS_BYTES
         .split_whitespace()
         .map(|string| string.to_lowercase())
         .filter(|string| {
@@ -19,14 +17,7 @@ fn load() {
                 && string.chars().all(|char| char.is_ascii_alphabetic())
         })
         .collect();
-    //.lines()
-    //.map(|word| word.to_lowercase())
-    //.filter(|word| !word.contains('-') && word.len() >= 3)
-    //.collect();
-
-    println!("{:?}", words);
-
-    //HashSet<"Hi">
+    words
 }
 
 fn basic() -> i64 {
@@ -43,8 +34,15 @@ fn basic() -> i64 {
     basic_entropy
 }
 
+fn advanced(basic: &i64) -> i64 {
+    let entropy: i64 = basic;
+
+    entropy
+}
+
 fn main() {
     load();
     println!("input password");
-    let basic: i64 = basic();
+    let mut basic: i64 = basic();
+    let advanced: i64 = advanced(&basic);
 }
