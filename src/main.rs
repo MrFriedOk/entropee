@@ -36,15 +36,19 @@ fn basic(password: &String) -> i64 {
 fn advanced(basic: &i64, password: &String, words: &HashSet<String>) {
     let mut entropy: i64 = *basic;
 
-    for word in &words.iter().collect::<Vec<_>>() {
-        if password.contains(*word) {
-            println!("your password has a known word in it")
-        }
-    }
+    let words_in: Vec<&String> = words
+        .iter()
+        .filter(|w| password.contains(*w))
+        .collect::<Vec<_>>();
+    //for word in &words.iter().collect::<Vec<_>>() {
+    //    if password.contains(*word) {
+    //        println!("your password has a known word in it")
+    //    }
+    //}
 
     println!(
-        "original entropy was {}. after some checks, it is now {}",
-        basic, entropy
+        "original entropy was {}. after some checks, it is now {}\n the words found were, {:?}",
+        basic, entropy, words_in
     )
 
     //basic
