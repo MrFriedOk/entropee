@@ -13,7 +13,11 @@ fn load() {
     let words: HashSet<String> = WORDS_BYTES
         .lines()
         .map(|word| word.to_lowercase())
-        .filter(|word| word.contains('-'))
+        .filter(|word| {
+            !word.contains('-')
+                && word.len() >= 3
+                && word.chars().all(|char| char.is_ascii_alphabetic())
+        })
         .collect();
     println!("{:?}", words);
 
