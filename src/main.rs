@@ -13,6 +13,11 @@ fn load() {
     let mut words: HashSet<String> = WORDS_BYTES
         .split_whitespace()
         .map(|string| string.to_lowercase())
+        .filter(|string| {
+            !string.contains('-')
+                && string.len() >= 3
+                && string.chars().all(|char| char.is_ascii_alphabetic())
+        })
         .collect();
     //.lines()
     //.map(|word| word.to_lowercase())
