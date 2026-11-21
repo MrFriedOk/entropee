@@ -20,8 +20,7 @@ fn load() -> HashSet<String> {
     words
 }
 
-fn basic() -> i64 {
-    let password: String = read_password().unwrap();
+fn basic(password: &String) -> i64 {
     let chars: Vec<char> = password.chars().collect();
 
     let basic_entropy: i64 = chars.len() as i64 * ASCII.ilog2() as i64;
@@ -34,16 +33,19 @@ fn basic() -> i64 {
     basic_entropy
 }
 
-fn advanced(basic: &mut i64) -> i64 {
+fn advanced(basic: &mut i64, password: &String) -> i64 {
     let words: HashSet<String> = load();
 
     *basic
 }
 
 fn main() {
+    println!("loading, please wait");
     load();
+
     println!("input password");
-    let mut basic: i64 = basic();
-    let advanced: i64 = advanced(&mut basic);
-    println!("after some checks, the entropy is now {} bits", advanced)
+    let password: String = read_password().unwrap();
+    let mut basic: i64 = basic(&password);
+    let advanced: i64 = advanced(&mut basic, &password);
+    println!("after some checks, the entropy is now {} bits", advanced);
 }
