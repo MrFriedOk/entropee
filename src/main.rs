@@ -10,7 +10,12 @@ const WORDS_BYTES: &str = include_str!("words.txt");
 
 fn load() {
     // -> HashSet<String> {
-    println!("{}", WORDS_BYTES);
+    let words: HashSet<String> = WORDS_BYTES
+        .lines()
+        .map(|word| word.to_lowercase())
+        .filter(|word| word.contains('-'))
+        .collect();
+    println!("{:?}", words);
 
     //HashSet<"Hi">
 }
