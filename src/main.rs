@@ -11,14 +11,13 @@ const WORDS_BYTES: &str = include_str!("words.txt");
 fn load() {
     // -> HashSet<String> {
     let mut words: HashSet<String> = WORDS_BYTES
-        .lines()
-        .map(|word| word.to_lowercase())
-        .filter(|word| !word.contains('-') && word.len() >= 3)
+        .split_whitespace()
+        .map(|string| string.to_lowercase())
         .collect();
-    words
-        .iter()
-        .filter(|string| string.chars().all(|char| char.is_alphabetic()))
-        .collect();
+    //.lines()
+    //.map(|word| word.to_lowercase())
+    //.filter(|word| !word.contains('-') && word.len() >= 3)
+    //.collect();
 
     println!("{:?}", words);
 
