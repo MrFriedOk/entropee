@@ -1,12 +1,13 @@
 use rpassword::read_password;
 
-const ASCII: u32 = 95;
+const ASCII: i64 = 95;
 
 fn main() {
     let password: String = read_password().unwrap();
     let chars: Vec<char> = password.chars().collect();
-    let basic_comb: u32 = ASCII.pow(chars.len() as u32);
-    let basic_entropy: u32 = basic_comb.ilog2();
+
+    let basic_entropy: i64 = chars.len() as i64 * ASCII.ilog2() as i64;
+
     println!("{:?}", basic_entropy);
     //println!("Hello, world!");
 }
