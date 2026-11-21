@@ -46,8 +46,10 @@ fn advanced(basic: &i64, password: &String, words: &HashSet<String>) {
     //    }
     //}
 
+    entropy = words_in.len() as i64 * words.len().ilog2() as i64;
+
     println!(
-        "original entropy was {}. after some checks, it is now {}\n the words found were, {:?}",
+        "original entropy was {}. after some checks, it is now {}\nthe words found were, {:?}",
         basic, entropy, words_in
     )
 
