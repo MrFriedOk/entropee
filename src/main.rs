@@ -33,19 +33,21 @@ fn basic(password: &String) -> i64 {
     basic_entropy
 }
 
-fn advanced(basic: &mut i64, password: &String) -> i64 {
-    let words: HashSet<String> = load();
+fn advanced(basic: &mut i64, password: &String, words: &HashSet<String>) -> i64 {
+    println!("{:?}", words);
 
     *basic
 }
 
 fn main() {
     println!("loading, please wait");
-    load();
-
+    let words: HashSet<String> = load();
     println!("input password");
+
     let password: String = read_password().unwrap();
+
     let mut basic: i64 = basic(&password);
-    let advanced: i64 = advanced(&mut basic, &password);
+
+    let advanced: i64 = advanced(&mut basic, &password, &words);
     println!("after some checks, the entropy is now {} bits", advanced);
 }
