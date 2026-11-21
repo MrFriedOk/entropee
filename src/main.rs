@@ -33,10 +33,15 @@ fn basic(password: &String) -> i64 {
     basic_entropy
 }
 
-fn advanced(basic: &mut i64, password: &String, words: &HashSet<String>) -> i64 {
-    println!("{:?}", words);
+fn advanced(basic: &i64, password: &String, words: &HashSet<String>) {
+    let mut entropy: i64 = *basic;
 
-    *basic
+    println!(
+        "original entropy was {}. after some checks, it is now {}",
+        basic, entropy
+    )
+
+    //basic
 }
 
 fn main() {
@@ -48,6 +53,7 @@ fn main() {
 
     let mut basic: i64 = basic(&password);
 
-    let advanced: i64 = advanced(&mut basic, &password, &words);
-    println!("after some checks, the entropy is now {} bits", advanced);
+    advanced(&basic, &password, &words)
+    //let advanced: i64 = advanced(&mut basic, &password, &words);
+    //println!("after some checks, the entropy is now {} bits", advanced);
 }
