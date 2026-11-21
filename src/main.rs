@@ -6,9 +6,14 @@ const ASCII: i64 = 95;
 
 const WORDS_BYTES: &str = include_str!("words.txt");
 
-const WORDS: HashSet<String> = load();
+//const WORDS: HashSet<String> = load();
 
-const fn load() -> HashSet<String> {}
+fn load() {
+    // -> HashSet<String> {
+    println!("{}", WORDS_BYTES);
+
+    //HashSet<"Hi">
+}
 
 fn basic() -> i64 {
     let password: String = read_password().unwrap();
@@ -25,6 +30,7 @@ fn basic() -> i64 {
 }
 
 fn main() {
+    load();
     println!("input password");
     let basic: i64 = basic();
 }
