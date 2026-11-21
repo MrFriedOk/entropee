@@ -1,6 +1,11 @@
 use rpassword::read_password;
+use std::{env, fs};
 
 const ASCII: i64 = 95;
+
+const WORDS_BYTES: &str = include_str!("words.txt");
+
+const WORDS: Vec<String> = "";
 
 fn basic() -> i64 {
     let password: String = read_password().unwrap();
@@ -17,5 +22,6 @@ fn basic() -> i64 {
 }
 
 fn main() {
+    println!("input password");
     let basic: i64 = basic();
 }
