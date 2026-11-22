@@ -1,5 +1,6 @@
 use rpassword::read_password;
 use std::collections::HashSet;
+use std::process
 
 const ASCII: i64 = 95;
 
@@ -54,6 +55,11 @@ fn main() {
     println!("input password");
 
     let password: String = read_password().unwrap();
+
+    if password == "4" {
+        println!("haha, funny 4");
+        panic!()
+    }
 
     let basic: i64 = basic(&password);
 
