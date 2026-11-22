@@ -67,4 +67,5 @@ fn main() -> ExitCode {
     advanced(&basic, &password, &words);
     //let advanced: i64 = advanced(&mut basic, &password, &words);
     //println!("after some checks, the entropy is now {} bits", advanced);
+    ExitCode::SUCCESS
 }
