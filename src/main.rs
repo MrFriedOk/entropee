@@ -1,6 +1,6 @@
 use rpassword::read_password;
 use std::collections::HashSet;
-use std::process::ExitCode
+use std::process::ExitCode;
 
 const ASCII: i64 = 95;
 
@@ -58,8 +58,9 @@ fn main() -> ExitCode {
 
     if password == "4" {
         println!("haha, funny 4");
-        return ExitCode::from(4)
-    }
+        let exit_code: ExitCode = ExitCode::from(4);
+        return exit_code;
+    };
 
     let basic: i64 = basic(&password);
 
