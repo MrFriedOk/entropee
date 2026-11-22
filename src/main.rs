@@ -1,6 +1,6 @@
 use rpassword::read_password;
 use std::collections::HashSet;
-use std::process
+use std::process::ExitCode
 
 const ASCII: i64 = 95;
 
@@ -49,7 +49,7 @@ fn advanced(basic: &i64, password: &String, words: &HashSet<String>) {
     //basic
 }
 
-fn main() {
+fn main() -> ExitCode {
     println!("loading, please wait");
     let words: HashSet<String> = load();
     println!("input password");
@@ -58,12 +58,12 @@ fn main() {
 
     if password == "4" {
         println!("haha, funny 4");
-        panic!()
+        return ExitCode::from(4)
     }
 
     let basic: i64 = basic(&password);
 
-    advanced(&basic, &password, &words)
+    advanced(&basic, &password, &words);
     //let advanced: i64 = advanced(&mut basic, &password, &words);
     //println!("after some checks, the entropy is now {} bits", advanced);
 }
